@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptador challenge</title>
+    <style>
+        .contenedor {
+            max-width: 50vh;
+            height: calc(100vh - 40px);
+            margin: auto;                                                                                       
+        }
+        .contenido {
+            display: flex;
+            justify-content: flex-start ;
+            flex-direction: column;
+        }
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            color: rgb(31, 64, 156);
+        }
+        input {
+            height: 40px;
+            border: 1px dashed black;
+            padding: 0 10px;
+        }
+        input::placeholder {
+            color: rgb(151, 151, 151);
+            font-weight: 500;
+        }
+        button {
+            margin: 5px auto;
+            min-width: 120px;
+            height: 30px;
+            border: 2px solid;
+            border-radius: 7px;
+            background-color: transparent;
+            display: inline;
+            font-size: 15px;
+            font-weight: 600;
+            color: #FFF;
+            cursor: pointer;
+            transition: transform 0.5s;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        #encriptar {
+            border-color: rgb(17, 112, 57);
+            margin-top: 20px;
+            background-color: rgb(17, 112, 57);
+        }
+        #desEncriptar {
+            border-color: rgb(179, 10, 10);
+            background-color: rgb(179, 10, 10);;
+        }
+        #copiar {
+            border: 1px solid rgb(22, 79, 165);
+            margin-bottom: 20px;
+            background-color: rgb(22, 79, 165);;
+        }
+        textarea {
+            resize: none;
+            border: 2px solid black;
+            border-radius: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Encriptame...</h1>
+        <div class="contenido">
+            <input type="text" name="" id="campo-texto" placeholder="Ingrese texto a encriptar">
+            <button id="encriptar" onclick="encriptar()">Encriptar</button>
+            <button id="desEncriptar" onclick="desEncriptar()">Desencriptar</button>
+            <button id="copiar" onclick="copy()">Copiar!</button>
+            <textarea name="" id="resultado" cols="30" rows="10" placeholder="Mensaje encriptado"></textarea>
+        </div>
+    </div>
+</body>
+<script>
+
+    function encriptar() {
+        let ingresoTexto = document.getElementById("campo-texto").value.toLowerCase();
+        encriptado = ingresoTexto.replace(/e/igm,"enter");
+        encriptado = encriptado.replace(/i/igm,"imes");
+        encriptado = encriptado.replace(/a/igm,"ai");
+        encriptado = encriptado.replace(/o/igm,"ober");
+        encriptado = encriptado.replace(/u/igm,"ufat");
+        document.getElementById("resultado").innerHTML = encriptado;
+    }
+    function desEncriptar() {
+        let ingresoTexto = document.getElementById("campo-texto").value.toLowerCase();
+        desEncriptado = ingresoTexto.replace(/enter/igm,"e");
+        desEncriptado = desEncriptado.replace(/imes/igm,"i");
+        desEncriptado = desEncriptado.replace(/ai/igm,"a");
+        desEncriptado = desEncriptado.replace(/ober/igm,"o");
+        desEncriptado = desEncriptado.replace(/ufat/igm,"u");
+        document.getElementById("resultado").innerHTML = desEncriptado;
+    }
+    function copy(){
+        var pegado = document.querySelector("#encriptado");
+        pegado.select();
+        document.execCommand("copy");
+    }
+</script>
+</html>
